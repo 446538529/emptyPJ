@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="plugins/angularjs/angular.min.js"></script>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        var app=angular.module("demoApp",[]);
+        app.controller("demoController",function ($scope,$http) {
+            $scope.findAll=function(){
+                $http.get("data.json").success(function (response) {
+                    $scope.list=response;
+                });
+            }
+        });
+
+    </script>
+</head>
+<body ng-app="demoApp" ng-controller="demoController" ng-init="findAll()">
+    <div ng-repeat="p in list">
+        {{p.name}}
+    </div>
+</body>
+</html>

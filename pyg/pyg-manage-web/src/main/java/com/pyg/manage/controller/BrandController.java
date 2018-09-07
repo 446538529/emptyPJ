@@ -33,4 +33,5 @@ public class BrandController {
                                   @RequestParam(name = "rows",defaultValue = "5") Integer rows){
         return (List<TbBrand>) brandService.queryByPage(page,rows).getRows();
     }
+
 }
