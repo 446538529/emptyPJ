@@ -31,8 +31,17 @@
     </bean>
 
     <!-- 扫描 mapper -->
-    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+    <!--<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="com.pyg.mapper"/>
+    </bean>-->
+    <!--配置通用mapper-->
+    <bean class="tk.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.pyg.mapper"></property>
+        <property name="properties">
+            <value>
+                mappers=tk.mybatis.mapper.common.Mapper
+            </value>
+        </property>
     </bean>
 
 </beans>

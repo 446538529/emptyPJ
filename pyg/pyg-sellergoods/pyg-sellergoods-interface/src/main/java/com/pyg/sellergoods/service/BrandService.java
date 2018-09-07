@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface BrandService {
     List<TbBrand> findAll();
+
+    List<TbBrand> findPage(Integer page, Integer rows);
 }
