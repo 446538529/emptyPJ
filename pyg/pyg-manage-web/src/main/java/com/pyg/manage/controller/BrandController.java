@@ -24,4 +24,13 @@ public class BrandController {
                                   @RequestParam(name = "rows",defaultValue = "5") Integer rows){
         return brandService.findPage(page,rows);
     }
+    @GetMapping("queryAll")
+    public List<TbBrand> queryAll(){
+        return brandService.queryAll();
+    }
+    @GetMapping("queryPage")
+    public List<TbBrand> queryPage(@RequestParam(name = "page",defaultValue = "1")Integer page,
+                                  @RequestParam(name = "rows",defaultValue = "5") Integer rows){
+        return (List<TbBrand>) brandService.queryByPage(page,rows).getRows();
+    }
 }

@@ -5,11 +5,12 @@ import com.github.pagehelper.PageHelper;
 import com.pyg.mapper.BrandMapper;
 import com.pyg.pojo.TbBrand;
 import com.pyg.sellergoods.service.BrandService;
+import com.pyg.service.impl.BaseServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 @Service(interfaceClass = BrandService.class)
-public class BrandServiceImpl implements BrandService {
+public class BrandServiceImpl extends BaseServiceImpl<TbBrand> implements BrandService {
     @Autowired
     private BrandMapper brandMapper;
     @Override
