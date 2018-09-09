@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="plugins/angularjs/angular.min.js"></script>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        var app=angular.module("demoApp",[]);
+        app.controller("demoController",function ($scope) {
+            $scope.add=function () {
+                var result=parseInt($scope.x)+parseInt($scope.y)
+                $scope.z=isNaN(result)?"":result;
+            };
+        });
+    </script>
+</head>
+<body ng-app="demoApp" ng-controller="demoController">
+    x:<input ng-model="x"/><br>
+    y:<input ng-model="y"><br>
+    <button ng-click="add()">点击计算</button></br>
+x+y={{z}}
+</body>
+</html>

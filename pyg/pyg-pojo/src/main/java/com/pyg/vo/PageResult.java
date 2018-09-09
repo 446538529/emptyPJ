@@ -2,6 +2,9 @@ package com.pyg.vo;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.CopyOnWriteArraySet;
 
 public class PageResult implements Serializable{
     private long total;
@@ -10,6 +13,11 @@ public class PageResult implements Serializable{
     public PageResult(long total, List<?> rows) {
         this.total = total;
         this.rows = rows;
+        //CopyOnWriteArrayList;
+        //CopyOnWriteArraySet;
+        //ConcurrentHashMap;
+        //读写锁
+        //信号量
     }
 
     public long getTotal() {
