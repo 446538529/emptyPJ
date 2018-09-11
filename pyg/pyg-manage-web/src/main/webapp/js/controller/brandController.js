@@ -26,7 +26,7 @@ app.controller("brandController", function ($scope,$controller,brandServcie) {
         }
         obj.success(function (response) {
             if (response.success){
-                $scope.readList();
+                $scope.reloadList();
             }else{
                 alert(response.message);
             }
@@ -47,7 +47,7 @@ app.controller("brandController", function ($scope,$controller,brandServcie) {
         if(confirm("确定删除吗?")){
             brandServcie.delete($scope.selectedIds).success(function (response) {
                 if(response.success){
-                    $scope.readList();
+                    $scope.reloadList();
                     $scope.selectedIds=[];
                 }else{
                     alert(response.message);
