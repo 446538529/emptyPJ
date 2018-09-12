@@ -11,6 +11,7 @@ import com.pyg.vo.Specification;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("specification")
@@ -76,5 +77,14 @@ public class SpecificationController {
             e.printStackTrace();
             return Result.ok("删除失败");
         }
+    }
+
+    /**
+     * 查询规格列表供模板页下拉使用
+     * @return
+     */
+    @GetMapping("selectOptionList")
+    public List<Map<String,String>> findSpecificationList(){
+        return specificationService.findSpecificationList();
     }
 }

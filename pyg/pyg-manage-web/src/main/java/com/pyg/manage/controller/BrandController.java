@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("brand")
@@ -115,5 +116,14 @@ public class BrandController {
                              @RequestParam(name = "rows",defaultValue = "5") Integer rows,
                              @RequestBody TbBrand tbBrand){
         return brandService.search(page, rows, tbBrand);
+    }
+
+    /**
+     * 返回品牌列表供模板页下拉使用
+     * @return
+     */
+    @GetMapping("selectOptionList")
+    public List<Map<String,String>> selectOptionList(){
+        return brandService.selectOptionList();
     }
 }

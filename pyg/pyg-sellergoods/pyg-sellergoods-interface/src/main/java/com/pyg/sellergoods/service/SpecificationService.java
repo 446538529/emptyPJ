@@ -8,6 +8,7 @@ import com.pyg.vo.Result;
 import com.pyg.vo.Specification;
 
 import java.util.List;
+import java.util.Map;
 
 public interface SpecificationService extends BaseService<TbSpecification>{
 
@@ -20,4 +21,6 @@ public interface SpecificationService extends BaseService<TbSpecification>{
     void update(Specification specification);
 
     void deleteByIds(Long[] ids);
+
+    List<Map<String,String>> findSpecificationList();
 }

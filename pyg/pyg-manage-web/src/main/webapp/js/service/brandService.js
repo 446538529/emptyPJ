@@ -1,5 +1,5 @@
 //服务抽取
-app.service("brandServcie",function ($http) {
+app.service("brandService",function ($http) {
     this.findPage=function (page,rows) {
         return $http.get("../brand/findPage.do?page="+page+"&rows="+rows);
     }
@@ -20,5 +20,8 @@ app.service("brandServcie",function ($http) {
     }
     this.delete=function (ids) {
         return $http.get("../brand/delete.do?ids="+ids);
+    }
+    this.selectOptionList=function () {
+        return $http.get("../brand/selectOptionList.do");
     }
 });

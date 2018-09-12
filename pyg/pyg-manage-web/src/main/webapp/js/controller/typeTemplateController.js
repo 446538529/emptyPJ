@@ -71,6 +71,9 @@ app.controller("typeTemplateController", function ($scope, $controller, typeTemp
 
     };
 
+    $scope.test=function () {
+        alert(11);
+    }
     //查询品牌列表
     $scope.brandList = {data:[]};//初始化
     $scope.findBrandList = function(){
@@ -95,5 +98,16 @@ app.controller("typeTemplateController", function ($scope, $controller, typeTemp
     $scope.deleteTableRow = function (index) {
         $scope.entity.customAttributeItems.splice(index, 1);
     };
-
+    $scope.jsonToString=function (jsonStr,key) {
+        var json=JSON.parse(jsonStr);
+        var str="";
+        for(var i=0;i<json.length;i++){
+            if(str.length==0){
+                str=json[i][key];
+            }else{
+                str+="，"+json[i][key];
+            }
+        }
+        return str;
+    }
 });

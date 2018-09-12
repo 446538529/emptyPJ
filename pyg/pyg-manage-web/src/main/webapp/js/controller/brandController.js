@@ -1,17 +1,17 @@
-app.controller("brandController", function ($scope,$controller,brandServcie) {
+app.controller("brandController", function ($scope,$controller,brandService) {
     //继承baseController(伪继承),可以使用baseController中定义的方法和变量
     $controller("baseController",{$scope:$scope});
     $scope.searchEntity={};
     //加载以及查询都是这个方法
     $scope.search = function (page,rows) {
-        brandServcie.search(page,rows,$scope.searchEntity).success(function (response) {
+        brandService.search(page,rows,$scope.searchEntity).success(function (response) {
             $scope.list = response.rows;
             $scope.paginationConf.totalItems=response.total;
         });
     }
     /*真正请求数据的方法*/
     $scope.findPage = function (page,rows) {
-        brandServcie.findPage(page,rows).success(function (response) {
+        brandService.findPage(page,rows).success(function (response) {
             $scope.list = response.rows;
             $scope.paginationConf.totalItems=response.total;
         });
@@ -20,9 +20,9 @@ app.controller("brandController", function ($scope,$controller,brandServcie) {
     $scope.save=function () {
         var obj;
         if($scope.entity.id){
-            obj=brandServcie.saveOrUpdate($scope.entity,"update");
+            obj=brandService.saveOrUpdate($scope.entity,"update");
         }else{
-            obj=brandServcie.saveOrUpdate($scope.entity,"add");
+            obj=brandService.saveOrUpdate($scope.entity,"add");
         }
         obj.success(function (response) {
             if (response.success){
@@ -34,7 +34,7 @@ app.controller("brandController", function ($scope,$controller,brandServcie) {
     }
     //根据id查询
     $scope.findOne=function (id) {
-        brandServcie.findOne(id).success(function (response) {
+        brandService.findOne(id).success(function (response) {
             $scope.entity=response;
         });
     }
@@ -45,7 +45,7 @@ app.controller("brandController", function ($scope,$controller,brandServcie) {
             return;
         }
         if(confirm("确定删除吗?")){
-            brandServcie.delete($scope.selectedIds).success(function (response) {
+            brandService.delete($scope.selectedIds).success(function (response) {
                 if(response.success){
                     $scope.reloadList();
                     $scope.selectedIds=[];

@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import tk.mybatis.mapper.entity.Example;
 
 import java.util.List;
+import java.util.Map;
+
 @Service(interfaceClass = BrandService.class)
 public class BrandServiceImpl extends BaseServiceImpl<TbBrand> implements BrandService {
     @Autowired
@@ -49,5 +51,14 @@ public class BrandServiceImpl extends BaseServiceImpl<TbBrand> implements BrandS
         List<TbBrand> list = brandMapper.selectByExample(example);
         PageInfo pageInfo=new PageInfo(list);
         return new PageResult(pageInfo.getTotal(),pageInfo.getList());
+    }
+
+    /**
+     * 返回品牌列表供模板页下拉使用
+     * @return
+     */
+    @Override
+    public List<Map<String, String>> selectOptionList() {
+        return brandMapper.selectOptionList();
     }
 }
