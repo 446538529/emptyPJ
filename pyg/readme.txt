@@ -6,3 +6,6 @@ dubbo服务监控:http://192.168.12.168:8088/
 
 运营商web层:pyg-manage-web
 运行tomcat端口:9100
+
+商家后台web层：pyg-shop-web
+运行tomcat端口:9101
