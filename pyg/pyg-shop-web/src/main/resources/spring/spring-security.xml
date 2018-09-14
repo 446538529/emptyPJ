@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans:beans xmlns="http://www.springframework.org/schema/security"
              xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation="http://www.springframework.org/schema/beans
              http://www.springframework.org/schema/beans/spring-beans.xsd
-          http://www.springframework.org/schema/security
-          http://www.springframework.org/schema/security/spring-security.xsd">
+             http://www.springframework.org/schema/security
+             http://www.springframework.org/schema/security/spring-security.xsd
+             http://code.alibabatech.com/schema/dubbo
+             http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
     <!--设置不需要认证的资源-->
-    <http pattern="/shoplogin.html" security="none"/>
-    <http pattern="/register.html" security="none"/>
+    <http pattern="/*.html" security="none"/>
     <http pattern="/css/**" security="none"/>
     <http pattern="/img/**" security="none"/>
     <http pattern="/js/**" security="none"/>
@@ -22,18 +24,24 @@
         <!--禁止跨站请求伪造校验-->
         <csrf disabled="true"/>
         <headers>
+            <!--如果有内嵌frame,在frame内部版跳转-->
             <frame-options policy="SAMEORIGIN"/>
         </headers>
+        <!--接收/logout请求的注销-->
         <logout/>
     </http>
+
+    <dubbo:application name="pyg-shop-web"/>
+    <dubbo:registry address="zookeeper://192.168.12.168:2181"/>
+    <dubbo:annotation package="com.pyg.shop.service.impl"/>
+    <!--自定义认证器-->
+    <beans:bean id="userDetailsServcieImpl" class="com.pyg.shop.service.impl.UserDetailsServcieImpl"/>
+    <!--配置密码加密对象-->
+    <beans:bean id="bCryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
     <!--认证管理器-->
     <authentication-manager>
-        <authentication-provider>
-            <!--拥有角色的用户名和密码-->
-            <user-service>
-                <user name="admin" password="123456" authorities="ROLE_USER"/>
-                <user name="yangting" password="123456" authorities="ROLE_USER"/>
-            </user-service>
+        <authentication-provider user-service-ref="userDetailsServcieImpl">
+            <password-encoder ref="bCryptPasswordEncoder"/>
         </authentication-provider>
     </authentication-manager>
 </beans:beans>

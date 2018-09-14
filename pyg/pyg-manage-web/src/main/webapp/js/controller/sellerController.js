@@ -4,14 +4,14 @@ app.controller("sellerController", function ($scope, $controller, sellerService)
     $controller("baseController",{$scope:$scope});
 
     //加载列表数据
-    $scope.findAll = function(){
-        sellerService.findAll().success(function (response) {
+    $scope.queryAll = function(){
+        sellerService.queryAll().success(function (response) {
             $scope.list = response;
         });
     };
 
-    $scope.findPage = function (page, rows) {
-        sellerService.findPage(page, rows).success(function (response) {
+    $scope.queryPage = function (page, rows) {
+        sellerService.queryPage(page, rows).success(function (response) {
             $scope.list = response.rows;
             $scope.paginationConf.totalItems = response.total;
         });
@@ -33,8 +33,8 @@ app.controller("sellerController", function ($scope, $controller, sellerService)
         });
     };
 
-    $scope.findOne = function (id) {
-        sellerService.findOne(id).success(function (response) {
+    $scope.queryOne = function (id) {
+        sellerService.queryOne(id).success(function (response) {
             $scope.entity = response;
         });
     };

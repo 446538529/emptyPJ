@@ -1,11 +1,10 @@
-package com.pyg.shop.controller;
+package com.pyg.manage.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.pyg.pojo.TbSeller;
 import com.pyg.sellergoods.service.SellerService;
 import com.pyg.vo.PageResult;
 import com.pyg.vo.Result;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -32,8 +31,6 @@ public class SellerController {
     public Result add(@RequestBody TbSeller seller) {
         try {
             seller.setStatus("0");
-            BCryptPasswordEncoder passwordEncoder=new BCryptPasswordEncoder();
-            seller.setPassword(passwordEncoder.encode(seller.getPassword()));
             sellerService.add(seller);
             return Result.ok("增加成功");
         } catch (Exception e) {
