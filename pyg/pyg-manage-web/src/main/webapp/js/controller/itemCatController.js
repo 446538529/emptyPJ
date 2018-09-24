@@ -1,4 +1,4 @@
-app.controller("itemCatController", function ($scope, $controller, itemCatService) {
+app.controller("itemCatController", function ($scope, $controller, itemCatService,typeTemplateService) {
 
     //加载baseController控制器并传入1个作用域，与angularJs运行时作用域相同.
     $controller("baseController",{$scope:$scope});
@@ -19,6 +19,7 @@ app.controller("itemCatController", function ($scope, $controller, itemCatServic
 
     $scope.save = function () {
         var object;
+        $scope.entity.parentId=$scope.currentEntity.id;
         if($scope.entity.id != null){//更新
             object = itemCatService.update($scope.entity);
         } else {//新增
@@ -26,7 +27,8 @@ app.controller("itemCatController", function ($scope, $controller, itemCatServic
         }
         object.success(function (response) {
             if(response.success){
-                $scope.reloadList();
+                window.location.reload();
+               // $scope.reloadList();
             } else {
                 alert(response.message);
             }
@@ -66,9 +68,14 @@ app.controller("itemCatController", function ($scope, $controller, itemCatServic
     };
 
     //根据父分类id查询其子分类
-    $scope.findByParentId = function (parentId) {
-        itemCatService.findByParentId(parentId).success(function (response) {
+    $scope.findByParentId = function (id,entity) {
+        itemCatService.findByParentId(id).success(function (response) {
             $scope.list = response;
+            if(id==0){
+                $scope.currentEntity={id:"0",name:"无上级分类"};
+            }else{
+                $scope.currentEntity=entity;
+            }
         });
     };
 
@@ -89,7 +96,13 @@ app.controller("itemCatController", function ($scope, $controller, itemCatServic
                 $scope.entity_2 = entity;
         }
 
-        $scope.findByParentId(entity.id);
+        $scope.findByParentId(entity.id,entity);
+    }
+    $scope.typeTemplateList={data:[]};
+    $scope.findTypeTemplateList=function () {
+        typeTemplateService.findTypeTemplateList().success(function (response) {
+            $scope.typeTemplateList.data=response;
+        });
     }
 
 });

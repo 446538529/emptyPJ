@@ -2,7 +2,7 @@
 app.service("itemCatService",function ($http) {
     //加载列表数据
     this.findAll = function(){
-        return $http.get("../itemCat/findAll.do");
+        return $http.get("../itemCat/queryAll.do");
     };
 
     this.findPage = function (page, rows) {
@@ -18,7 +18,7 @@ app.service("itemCatService",function ($http) {
     };
 
     this.findOne = function (id) {
-        return $http.get("../itemCat/findOne.do?id=" + id);
+        return $http.get("../itemCat/queryOne.do?id=" + id);
     };
 
     this.delete = function (selectedIds) {

@@ -8,6 +8,9 @@ import com.pyg.vo.PageResult;
 import com.pyg.vo.Result;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.Map;
+
 @RequestMapping("typeTemplate")
 @RestController
 public class TypeTemplateController {
@@ -60,5 +63,9 @@ public class TypeTemplateController {
             e.printStackTrace();
             return Result.fail("删除失败");
         }
+    }
+    @GetMapping("findOptionList")
+    public List<Map<String,Object>> findOptionList(){
+        return typeTemplateService.findOptionList();
     }
 }

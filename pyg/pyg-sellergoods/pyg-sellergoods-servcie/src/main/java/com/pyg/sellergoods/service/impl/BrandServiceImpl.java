@@ -10,11 +10,12 @@ import com.pyg.service.impl.BaseServiceImpl;
 import com.pyg.vo.PageResult;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.entity.Example;
 
 import java.util.List;
 import java.util.Map;
-
+@Transactional
 @Service(interfaceClass = BrandService.class)
 public class BrandServiceImpl extends BaseServiceImpl<TbBrand> implements BrandService {
     @Autowired

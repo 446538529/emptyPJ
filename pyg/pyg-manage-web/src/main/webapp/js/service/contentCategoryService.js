@@ -2,7 +2,7 @@
 app.service("contentCategoryService",function ($http) {
     //加载列表数据
     this.findAll = function(){
-        return $http.get("../contentCategory/findAll.do");
+        return $http.get("../contentCategory/queryAll.do");
     };
 
     this.findPage = function (page, rows) {

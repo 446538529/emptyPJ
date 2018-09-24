@@ -33,7 +33,7 @@
 
 </head>
 
-<body ng-app="pinyougou" ng-controller="goodsController" ng-init="selectItemCat1List();findOne()" class="hold-transition skin-red sidebar-mini">
+<body ng-app="pyg" ng-controller="goodsController" ng-init="selectItemCat1List();findOne()" class="hold-transition skin-red sidebar-mini">
 
             <!-- 正文区域 -->
             <section class="content">
@@ -255,6 +255,7 @@
                  	
                    </div>
                   <div class="btn-toolbar list-toolbar">
+					  {{entity}}
 				      <button class="btn btn-primary" ng-click="save()"><i class="fa fa-save"></i>保存</button>
                       <a href="goods.html" class="btn btn-default">返回列表</a>
 				  </div>

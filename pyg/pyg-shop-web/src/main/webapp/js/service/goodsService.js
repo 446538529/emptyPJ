@@ -18,7 +18,7 @@ app.service("goodsService",function ($http) {
     };
 
     this.findOne = function (id) {
-        return $http.get("../goods/findOne.do?id=" + id);
+        return $http.get("../goods/queryOne.do?id=" + id);
     };
 
     this.delete = function (selectedIds) {

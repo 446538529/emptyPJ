@@ -61,6 +61,11 @@
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-config</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.pyg</groupId>
+            <artifactId>pyg-content-interface</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>

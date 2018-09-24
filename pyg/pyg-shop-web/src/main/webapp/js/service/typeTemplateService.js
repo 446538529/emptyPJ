@@ -18,7 +18,7 @@ app.service("typeTemplateService",function ($http) {
     };
 
     this.findOne = function (id) {
-        return $http.get("../typeTemplate/findOne.do?id=" + id);
+        return $http.get("../typeTemplate/queryOne.do?id=" + id);
     };
 
     this.delete = function (selectedIds) {
@@ -33,5 +33,7 @@ app.service("typeTemplateService",function ($http) {
     this.findSpecList = function (id) {
         return $http.get("../typeTemplate/findSpecList.do?id=" + id);
     };
-
+    this.findTypeTemplateList=function () {
+        return $http.get("../typeTemplate/findOptionLists.do?");
+    }
 });

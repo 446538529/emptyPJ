@@ -10,10 +10,11 @@ import com.pyg.service.impl.BaseServiceImpl;
 import com.pyg.vo.PageResult;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.entity.Example;
 
 import java.util.List;
-
+@Transactional
 @Service(interfaceClass = SellerService.class)
 public class SellerServiceImpl extends BaseServiceImpl<TbSeller> implements SellerService {
 

@@ -14,12 +14,13 @@ import com.pyg.vo.Result;
 import com.pyg.vo.Specification;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.entity.Example;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-
+@Transactional
 @Service(interfaceClass = SpecificationService.class)
 public class SpecificationServiceImpl extends BaseServiceImpl<TbSpecification> implements SpecificationService{
     @Autowired

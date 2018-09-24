@@ -88,6 +88,7 @@ app.controller("goodsController", function ($scope, $controller, $location, good
 
     $scope.searchEntity = {};//初始为空
     $scope.search = function (page, rows) {
+        $scope.searchEntity.auditStatus="1";
         goodsService.search(page, rows, $scope.searchEntity).success(function (response) {
             $scope.list = response.rows;
             $scope.paginationConf.totalItems = response.total;

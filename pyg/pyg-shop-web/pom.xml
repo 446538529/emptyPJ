@@ -13,6 +13,11 @@
     <dependencies>
         <dependency>
             <groupId>com.pyg</groupId>
+            <artifactId>pyg-common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.pyg</groupId>
             <artifactId>pyg-sellergoods-interface</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
@@ -59,6 +64,10 @@
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-config</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
         </dependency>
     </dependencies>
     <build>
